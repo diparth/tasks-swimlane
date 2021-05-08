@@ -1,0 +1,31 @@
+<section>
+  <form [formGroup]="form">
+    <div class="mb-3">
+      <label for="mobile" class="form-label">Title</label>
+      <input type="text" formControlName="title" class="form-control" id="title" placeholder="Title" required>
+
+      <label for="type" class="form-label">Type</label>
+      <select formControlName="type" class="form-control">
+        <option value="work">Work</option>
+        <option value="progress">In Progress</option>
+        <option value="qa">QA</option>
+        <option value="completed">Completed</option>
+      </select>
+
+      <label for="description" class="form-label">Description</label>
+      <input type="text" formControlName="description" class="form-control" id="description" placeholder="Title"
+        required>
+
+      <label for="priority" class="form-label">Priority</label>
+      <select formControlName="priority" class="form-control">
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+        <option value="critical">Critical</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <button type="button" (click)="save()" class="btn btn-dark">Save</button>
+    </div>
+  </form>
+</section>

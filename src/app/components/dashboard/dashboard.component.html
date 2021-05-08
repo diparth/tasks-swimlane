@@ -1,0 +1,9 @@
+<section>
+
+  <div class="head">
+    <h2 class="display-2">Mobile: {{ mobile }}</h2>
+    <h3 class="display-3">Username: dpate</h3>
+    <button class="btn btn-dark" [disabled]="isPunchedIn" (click)="punchIn()">Punch in</button>
+    <button class="btn btn-light" (click)="logout()">Logout</button>
+  </div>
+</section>

@@ -1,0 +1,57 @@
+<section>
+  <button class="btn btn-dark" (click)="new()">Add New</button>
+  <div cdkDropListGroup class="group">
+    <div class="example-container">
+      <h2>Work List: {{ workList.length }}</h2>
+
+      <div cdkDropList id="work" [cdkDropListData]="workList" class="example-list" (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of workList" cdkDrag>
+          <p>Title: {{ item.title }}</p>
+          <p>Type: {{ item.type }}</p>
+          <p>Description: {{ item.description }}</p>
+          <p>Priority: {{ item.priority }}</p>
+          <button class="btn btn-dark" (click)="edit(item)">Edit</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-container">
+      <h2>In Progress: {{ progressList.length }}</h2>
+
+      <div cdkDropList id="inprogress" [cdkDropListData]="progressList" class="example-list" (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of progressList" cdkDrag>
+          <p>Title: {{ item.title }}</p>
+          <p>Type: {{ item.type }}</p>
+          <p>Description: {{ item.description }}</p>
+          <p>Priority: {{ item.priority }}</p><button class="btn btn-dark" (click)="edit(item)">Edit</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-container">
+      <h2>QA: {{ qaList.length }}</h2>
+
+      <div cdkDropList id="qa" [cdkDropListData]="qaList" class="example-list" (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of qaList" cdkDrag>
+          <p>Title: {{ item.title }}</p>
+          <p>Type: {{ item.type }}</p>
+          <p>Description: {{ item.description }}</p>
+          <p>Priority: {{ item.priority }}</p><button class="btn btn-dark" (click)="edit(item)">Edit</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-container">
+      <h2>Completed: {{ completedList.length }}</h2>
+
+      <div cdkDropList id="completed" [cdkDropListData]="completedList" class="example-list" (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of completedList" cdkDrag>
+          <p>Title: {{ item.title }}</p>
+          <p>Type: {{ item.type }}</p>
+          <p>Description: {{ item.description }}</p>
+          <p>Priority: {{ item.priority }}</p><button class="btn btn-dark" (click)="edit(item)">Edit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

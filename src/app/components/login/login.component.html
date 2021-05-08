@@ -1,0 +1,37 @@
+<section>
+  <h1 class="display-1">Login</h1>
+
+  <form [formGroup]="form">
+
+    <ng-container *ngIf="!hasMobile">
+      <h3 class="display-3">Login with your Mobile</h3>
+      <div class="mb-3">
+        <label for="mobile" class="form-label">Mobile Number</label>
+        <input type="text" formControlName="mobileNumber" class="form-control" id="mobile"
+          placeholder="Enter your mobile number." required>
+        <div *ngIf="controls.mobileNumber.touched && f.mobileNumber.invalid" class="alert alert-danger">
+          <div *ngIf="controls.mobileNumber.errors.required">Mobile Number is required.</div>
+          <div *ngIf="controls.mobileNumber.errors.pattern">Please, Enter 10 digit Mobile Number.</div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <button type="button" (click)="userLogin()" class="btn btn-dark">Get OTP</button>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="hasMobile">
+      <h3 class="display-3">Please enter correct OTP</h3>
+      <div class="mb-3">
+        <label for="otp" class="form-label">OTP</label>
+        <input type="text" formControlName="otp" class="form-control" id="otp" placeholder="Enter your correct otp."
+          required>
+        <div *ngIf="controls.otp.errors.required && controls.otp.dirty">OTP is required.</div>
+        <div *ngIf="tryAgain">OTP Invalid.</div>
+      </div>
+      <div class="mb-3">
+        <button type="button" (click)="loginWithOTP()" class="btn btn-dark">Submit</button>
+      </div>
+    </ng-container>
+
+  </form>
+</section>
