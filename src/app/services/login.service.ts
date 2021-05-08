@@ -22,7 +22,7 @@ export class LoginService {
     } else {
       localStorage.setItem('otp', otp.toString());
 
-      return of({ otpSaved: true, matched: false });
+      return of({ otpSaved: true, matched: true });
     }
   }
 
