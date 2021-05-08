@@ -1,7 +1,7 @@
 import { TaskFormComponent } from './../task-form/task-form.component';
 import { Utils } from './../../services/utils';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -57,27 +57,43 @@ export class TaskListComponent implements OnInit {
     if (event.container.id === "work") {
       this.updateList(this.workList, "work");
     } else if (event.container.id === "inprogress") {
-      this.updateList(this.workList, "inprogress");
+      this.updateList(this.progressList, "inprogress");
     } else if (event.container.id === "qa") {
-      this.updateList(this.workList, "qa");
+      this.updateList(this.qaList, "qa");
     } else if (event.container.id === "completed") {
-      this.updateList(this.workList, "completed");
+      this.updateList(this.completedList, "completed");
     }
+
+    this.updateLocalStorageList();
   }
 
   public updateList(list, type): void {
     list.forEach(item => { item.type = type });
   }
 
+  public updateLocalStorageList(): void {
+    this.listData = [ ...this.workList, ...this.progressList, ...this.qaList, ...this.completedList ];
+    localStorage.setItem('work_items', JSON.stringify(this.listData));
+  }
+
   public edit(data: any): void {
     this.dialog.open(TaskFormComponent, { data }).afterClosed().subscribe(result => {
-      const index = this.workList.findIndex(item => item.id === result.id);
+      const index = this.listData.findIndex(item => item.id === result.id);
       this.listData.splice(index, 1, result);
 
       localStorage.setItem('work_items', JSON.stringify(this.listData));
 
       this.prepareListData();
     });
+  }
+
+  public delete(data: any): void {
+    const index = this.listData.findIndex(item => item.id === data.id);
+      this.listData.splice(index, 1);
+
+      localStorage.setItem('work_items', JSON.stringify(this.listData));
+
+      this.prepareListData();
   }
 
   public new(): void {

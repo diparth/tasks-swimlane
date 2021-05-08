@@ -11,6 +11,7 @@
           <p>Description: {{ item.description }}</p>
           <p>Priority: {{ item.priority }}</p>
           <button class="btn btn-dark" (click)="edit(item)">Edit</button>
+          <button class="btn btn-danger" (click)="delete(item)">Delete</button>
         </div>
       </div>
     </div>
@@ -18,12 +19,15 @@
     <div class="example-container">
       <h2>In Progress: {{ progressList.length }}</h2>
 
-      <div cdkDropList id="inprogress" [cdkDropListData]="progressList" class="example-list" (cdkDropListDropped)="drop($event)">
+      <div cdkDropList id="inprogress" [cdkDropListData]="progressList" class="example-list"
+        (cdkDropListDropped)="drop($event)">
         <div class="example-box" *ngFor="let item of progressList" cdkDrag>
           <p>Title: {{ item.title }}</p>
           <p>Type: {{ item.type }}</p>
           <p>Description: {{ item.description }}</p>
-          <p>Priority: {{ item.priority }}</p><button class="btn btn-dark" (click)="edit(item)">Edit</button>
+          <p>Priority: {{ item.priority }}</p>
+          <button class="btn btn-dark" (click)="edit(item)">Edit</button>
+          <button class="btn btn-danger" (click)="delete(item)">Delete</button>
         </div>
       </div>
     </div>
@@ -36,7 +40,9 @@
           <p>Title: {{ item.title }}</p>
           <p>Type: {{ item.type }}</p>
           <p>Description: {{ item.description }}</p>
-          <p>Priority: {{ item.priority }}</p><button class="btn btn-dark" (click)="edit(item)">Edit</button>
+          <p>Priority: {{ item.priority }}</p>
+          <button class="btn btn-dark" (click)="edit(item)">Edit</button>
+          <button class="btn btn-danger" (click)="delete(item)">Delete</button>
         </div>
       </div>
     </div>
@@ -44,12 +50,15 @@
     <div class="example-container">
       <h2>Completed: {{ completedList.length }}</h2>
 
-      <div cdkDropList id="completed" [cdkDropListData]="completedList" class="example-list" (cdkDropListDropped)="drop($event)">
+      <div cdkDropList id="completed" [cdkDropListData]="completedList" class="example-list"
+        (cdkDropListDropped)="drop($event)">
         <div class="example-box" *ngFor="let item of completedList" cdkDrag>
           <p>Title: {{ item.title }}</p>
           <p>Type: {{ item.type }}</p>
           <p>Description: {{ item.description }}</p>
-          <p>Priority: {{ item.priority }}</p><button class="btn btn-dark" (click)="edit(item)">Edit</button>
+          <p>Priority: {{ item.priority }}</p>
+          <button class="btn btn-dark" (click)="edit(item)">Edit</button>
+          <button class="btn btn-danger" (click)="delete(item)">Delete</button>
         </div>
       </div>
     </div>
