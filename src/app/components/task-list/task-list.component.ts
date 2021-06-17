@@ -96,7 +96,7 @@ export class TaskListComponent implements OnInit {
       this.prepareListData();
   }
 
-  public new(): void {
+  public newForm(): void {
     this.dialog.open(TaskFormComponent).afterClosed().subscribe(result => {
       this.listData.push(result);
 
